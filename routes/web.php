@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgreementInstitutionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GeneralListController;
@@ -36,3 +37,5 @@ Route::get('datos-empresa', [RegisterInstitutionController::class, "institution"
 Route::get('vacancias', [VacancyInstitutionController::class, "index"])->name('vacancy.institution')->middleware('auth');
 
 Route::get('listas-generales', [GeneralListController::class, "index"])->name('general.list');
+Route::get('convenios', [AgreementInstitutionController::class, "index"])->name('agreement.institution');
+Route::get('convenios-descarga/{path}', [AgreementInstitutionController::class, "downloadAgreement"])->name('agreement.download');

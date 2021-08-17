@@ -63,7 +63,7 @@
                         <input wire:model="nacimiento" class="form-control block mx-auto" type="date">
                     </div>
                     <div class="intro-y col-span-12 sm:col-span-3">
-                        <label \class="form-label">Departamento</label>
+                        <label class="form-label">Departamento</label>
                         <select wire:model="departamento" class="form-select">
                             <option value="">Seleccione un opcion</option>
                             @foreach ($departments as $department)

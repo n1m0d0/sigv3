@@ -3,10 +3,10 @@
 namespace App\Http\Livewire;
 
 use App\Models\CareerPerson;
+use App\Models\Department;
 use App\Models\Person;
 use App\Models\Vacancy;
 use Livewire\Component;
-use Illuminate\Database\Eloquent\Builder;
 
 class ListVacancy extends Component
 {
@@ -15,10 +15,12 @@ class ListVacancy extends Component
     public $vacancia;
     public $data;
     public $people;
+    public $departamento;
 
     public function render()
     {
-        return view('livewire.list-vacancy');
+        $departments = Department::all();
+        return view('livewire.list-vacancy', compact('departments'));
     }
 
     public function searchPeople($id)
@@ -29,28 +31,24 @@ class ListVacancy extends Component
             $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Profecional');
         })->get();*/
         if ($this->vacancia->grado_academico == 'Profesional') {
-            //$this->careers = CareerPerson::where('career_id', $this->vacancia->career_id)->where('grado_academico', '!=', 'Egresado')->where('grado_academico', '!=', 'Bachillerato')->where('grado_academico', '!=', 'Técnico')->get();
             $this->people = Person::whereHas('careers', function ($query) {
                 $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', '!=', 'Egresado')->where('grado_academico', '!=', 'Bachillerato')->where('grado_academico', '!=', 'Técnico');
-            })->get();
+            })->where('department_id', $this->vacancia->branch->department_id)->get();
         }
         if ($this->vacancia->grado_academico == 'Egresado') {
-            //$this->careers = CareerPerson::where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Egresado')->get();
             $this->people = Person::whereHas('careers', function ($query) {
                 $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Egresado');
-            })->get();
+            })->where('department_id', $this->vacancia->branch->department_id)->get();
         }
         if ($this->vacancia->grado_academico == 'Técnico') {
-            //$this->careers = CareerPerson::where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Técnico')->get();
             $this->people = Person::whereHas('careers', function ($query) {
                 $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Técnico');
-            })->get();
+            })->where('department_id', $this->vacancia->branch->department_id)->get();
         }
         if ($this->vacancia->grado_academico == 'Bachillerato') {
-            //$this->careers = CareerPerson::where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Bachillerato')->get();
             $this->people = Person::whereHas('careers', function ($query) {
                 $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Bachillerato');
-            })->get();
+            })->where('department_id', $this->vacancia->branch->department_id)->get();
         }
     }
 }

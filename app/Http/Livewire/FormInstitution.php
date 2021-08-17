@@ -62,7 +62,7 @@ class FormInstitution extends Component
         $this->validate([
             'rubro' => 'required',
             'actividad' => 'required',
-            'archivoNit' => 'required|image|max:5120'
+            'archivoNit' => 'required|mimes:jpg,bmp,png,pdf|max:5120'
         ]);
 
         $institution = Institution::find($this->institution_id);

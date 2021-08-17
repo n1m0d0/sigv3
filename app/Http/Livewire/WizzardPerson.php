@@ -14,6 +14,7 @@ use App\Models\Problem;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Http;
 
 class WizzardPerson extends Component
 {
@@ -140,7 +141,7 @@ class WizzardPerson extends Component
         $this->validate([
             'nombreHijo' => 'required',
             'nacimientoHijo' => 'required|date',
-            'archivoHijo' => 'required|image|max:5120'
+            'archivoHijo' => 'required|mimes:jpg,bmp,png,pdf|max:5120'
         ]);
         $decendant = new Decendant();
         $decendant->person_id = $this->person_id;
@@ -199,7 +200,7 @@ class WizzardPerson extends Component
             'telefonoPersona' => 'required|numeric'
         ]);
 
-        $person = Person::find($this->person_id);
+        /*$person = Person::find($this->person_id);
         $person->ci = $this->ci;
         $person->expedido = $this->expedido;
         $person->genero = $this->genero;
@@ -215,7 +216,37 @@ class WizzardPerson extends Component
 
         session()->flash('message', 'Los datos se guardaron correctamente.');
 
-        $this->step2();
+        $this->step2();*/
+
+        $response = Http::post('https://sig.planificacion.gob.bo:8080/pge/v1/soapapiservicioexterno/consultadatopersonacertificacion', [
+            'numeroDocumento' => $this->ci
+        ])->throw()->json();
+
+        if ($response["consultaDatoPersonaCertificacionResult"]["value"]["codigoRespuesta"] == 2) {
+            $person = Person::find($this->person_id);
+            $person->ci = $this->ci;
+            $person->expedido = $this->expedido;
+            $person->genero = $this->genero;
+            $person->edad = $this->edad;
+            $person->nacimiento = $this->nacimiento;
+            $person->department_id = $this->departamento;
+            $person->direccion = $this->direccion;
+            $person->hijos = $this->hijos;
+            $person->estado_civil = $this->estadoCivil;
+            $person->telefono = $this->telefonoPersona;
+            $person->step = 2;
+            $person->validacion_segip = 1;
+            $person->save();
+
+            session()->flash('message', 'Los datos se guardaron correctamente.');
+
+            $this->step2();
+        } else {
+            $person = Person::find($this->person_id);
+            $person->validacion_segip = 0;
+            $person->save();
+            session()->flash('alert', 'El carnet de identidad no es valido');
+        }
     }
 
     public function updateDiscapacidad()
@@ -223,7 +254,7 @@ class WizzardPerson extends Component
         if ($this->discapacidad) {
             $this->validate([
                 'tipoDiscapacidad' => 'required',
-                'archivod' => 'required|image|max:5120'
+                'archivod' => 'required|mimes:jpg,bmp,png,pdf|max:5120'
             ]);
             $person = Person::find($this->person_id);
             $person->discapacidad = $this->discapacidad;
@@ -277,7 +308,7 @@ class WizzardPerson extends Component
         if ($this->discapacidad) {
             $this->validate([
                 'tipoDiscapacidad' => 'required',
-                'archivod' => 'required|image|max:5120'
+                'archivod' => 'required|mimes:jpg,bmp,png,pdf|max:5120'
             ]);
         } else {
             $this->validate([
@@ -302,7 +333,7 @@ class WizzardPerson extends Component
             'institutionFormacion' => 'required',
             'gradoFormacion' => 'required',
             'egresoFormacion' => 'required',
-            'archivoFormacion' => 'required|image|max:5120'
+            'archivoFormacion' => 'required|mimes:jpg,bmp,png,pdf|max:5120'
         ]);
 
         $study = new CareerPerson();
@@ -343,7 +374,7 @@ class WizzardPerson extends Component
             'institutionLaboral' => 'required',
             'cargoLaboral' => 'required',
             'experienciaLaboral' => 'required|numeric',
-            'archivoLaboral' => 'required|image|max:5120'
+            'archivoLaboral' => 'required|mimes:jpg,bmp,png,pdf|max:5120'
         ]);
 
         $experience = new Experience();
@@ -351,7 +382,7 @@ class WizzardPerson extends Component
         $experience->institution = $this->institutionLaboral;
         $experience->cargo = $this->cargoLaboral;
         $experience->experiencia = $this->experienciaLaboral;
-        $experience->certificado = $this->archivoLaboral->store('pubic');
+        $experience->certificado = $this->archivoLaboral->store('public');
         $experience->save();
 
         session()->flash('message', 'Los datos se guardaron correctamente.');

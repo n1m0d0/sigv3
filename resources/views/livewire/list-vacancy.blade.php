@@ -79,7 +79,18 @@
             </div>
         </div>
 
-        <div class="box mt-8 py-8 px-6">
+        <div class="box gird gird-cols-12 flex gap-4 items-center mt-2 py-4 px-6">
+            <div class="col-span-12 sm:col-span-3">
+            </div>
+            <div class="col-span-12 sm:col-span-3">
+            </div>
+            <div class="col-span-12 sm:col-span-3">
+            </div>
+            <div class="col-span-12 sm:col-span-3">
+            </div>
+        </div>
+
+        <div class="box mt-2 py-8 px-6">
             <h1 class="text-lg font-medium leading-none mt-3 text-center">Posibles Beneficiarios</h1>
             <div class="overflow-x-auto mt-6">
                 <table class="table">
