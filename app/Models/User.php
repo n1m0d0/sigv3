@@ -58,4 +58,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Agreement::class);
     }
+
+    public function official()
+    {
+        return $this->belongsTo(Official::class);
+    }
 }
