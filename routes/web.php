@@ -32,10 +32,9 @@ Route::post('registro-empresa', [RegisterInstitutionController::class, "store"])
 
 Route::post('logout', [AuthController::class, "logout"])->name('auth.logout')->middleware('auth');
 Route::view('dashboard', 'pages.dashboard')->name('page.dashboard')->middleware('auth');
-Route::get('datos-persona', [RegisterPersonController::class, "person"])->name('data.person')->middleware('auth');
-Route::get('datos-empresa', [RegisterInstitutionController::class, "institution"])->name('data.institution')->middleware('auth');
-Route::get('vacancias', [VacancyInstitutionController::class, "index"])->name('vacancy.institution')->middleware('auth');
+Route::get('datos-persona', [RegisterPersonController::class, "person"])->name('data.person')->middleware(['auth', 'role:persona']);
+Route::get('datos-empresa', [RegisterInstitutionController::class, "institution"])->name('data.institution')->middleware(['auth', 'role:empresa']);
+Route::get('vacancias', [VacancyInstitutionController::class, "index"])->name('vacancy.institution')->middleware(['auth', 'role:empresa']);
 
-Route::get('listas-generales', [GeneralListController::class, "index"])->name('general.list');
-Route::get('convenios', [AgreementInstitutionController::class, "index"])->name('agreement.institution');
-Route::get('convenios-descarga/{path}', [AgreementInstitutionController::class, "downloadAgreement"])->name('agreement.download');
+Route::get('listas-generales', [GeneralListController::class, "index"])->name('general.list')->middleware('auth');
+Route::get('convenios', [AgreementInstitutionController::class, "index"])->name('agreement.institution')->middleware('auth');

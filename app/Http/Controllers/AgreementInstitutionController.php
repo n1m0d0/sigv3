@@ -12,9 +12,4 @@ class AgreementInstitutionController extends Controller
     {
         return view('pages.agreement');
     }
-
-    public function downloadAgreement($path)
-    {
-        return response()->download($path);
-    }
 }

@@ -116,11 +116,17 @@
                                     {{ $person->department->nombre }}
                                 </td>
                                 <td class="border-b dark:border-dark-5">
-                                    {{ $person->genero }}
+                                    @if ($person->genero == 'M')
+                                        Femenino
+                                    @else
+                                        Masculino
+                                    @endif
                                 </td>
                                 <td class="border-b dark:border-dark-5">
                                     @if ($person->hijos == 1)
                                         Si
+                                    @else
+                                        No
                                     @endif
                                 </td>
                                 <td class="border-b dark:border-dark-5">
@@ -133,8 +139,7 @@
                                     </ul>
                                 </td>
                                 <td class="border-b dark:border-dark-5">
-                                    <a href=""
-                                        class="flex items-center mr-3 cursor-pointer">
+                                    <a href="" class="flex items-center mr-3 cursor-pointer">
                                         <x-feathericon-plus-circle class="w-4 h-4 mr-1" /> Agregar
                                     </a>
                                 </td>
