@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\Confirmation;
 use App\Models\User;
 use App\Models\Person;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Mail;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterPersonController extends Controller
 {
@@ -66,6 +67,8 @@ class RegisterPersonController extends Controller
             $msj->subject($subject);
             $msj->to($for);
         });*/
+
+        Mail::to("receiver@example.com")->send(new Confirmation($user));
 
         return redirect()->intended('/')->with("message", "Registrado correctamente");
     }
