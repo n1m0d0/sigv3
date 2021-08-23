@@ -56,7 +56,7 @@
 
                     <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                         <a class="btn btn-outline-secondary py-3 px-4 w-full xl:w-80 mt-3 xl:mt-0 align-top"
-                            href="{{ route('form.person') }}">Registrarse Jovenes</a>
+                            href="{{ route('form.person') }}">Registrarse Jóvenes</a>
                         <a class="btn btn-outline-secondary py-3 px-4 w-full xl:w-80 mt-3 xl:mt-0 align-top"
                             href="{{ route('form.institution') }}">Registrarse Empresa</a>
                     </div>

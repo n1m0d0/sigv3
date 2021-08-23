@@ -43,4 +43,9 @@ class Person extends Model
     {
         return $this->hasMany(Experience::class);
     }
+
+    public function abilities()
+    {
+        return $this->belongsToMany(Ability::class);
+    }
 }

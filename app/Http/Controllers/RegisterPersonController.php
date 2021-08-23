@@ -68,7 +68,7 @@ class RegisterPersonController extends Controller
             $msj->to($for);
         });*/
 
-        Mail::to("receiver@example.com")->send(new Confirmation($user));
+        //Mail::to("receiver@example.com")->send(new Confirmation($user));
 
         return redirect()->intended('/')->with("message", "Registrado correctamente");
     }

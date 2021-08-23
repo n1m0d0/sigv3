@@ -11,7 +11,7 @@ class CareerPerson extends Model
 
     protected $table = "career_person";
 
-    //Relacion uno a mucos inversa
+    //Relacion uno a muchos inversa
 
     public function career(){
         return $this->belongsTo(Career::class);

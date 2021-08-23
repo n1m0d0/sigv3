@@ -49,6 +49,12 @@
                 <div class="menu__title"> Registro </div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('abilities.person') }}" class="menu">
+                <div class="menu__icon"> <i data-feather="inbox"></i> </div>
+                <div class="menu__title"> Habilidades </div>
+            </a>
+        </li>
         @endrole
         @role('empresa')
         <li>
