@@ -15,8 +15,12 @@ class CreateAbilitiesTable extends Migration
     {
         Schema::create('abilities', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->unsignedBigInteger('person_id');
+            $table->tinyText('descripcion');
+            $table->string('estado');
             $table->timestamps();
+
+            $table->foreign('person_id')->references('id')->on('people');
         });
     }
 

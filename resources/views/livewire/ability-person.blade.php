@@ -3,20 +3,11 @@
         @include('layout.partials.errors')
         @include('layout.partials.flashMessage')
         <h1 class="text-xl text-gray-900">Registra tus habilidades</h1>
-        <form wire:submit.prevent='addAbility'
-            class="intro-y grid grid-cols-12 gap-2 items-center">
-            <div class="col-span-12 sm:col-span-3">
+        <form wire:submit.prevent='addAbility' class="intro-y grid grid-cols-12 gap-2 items-center">
+            <div class="col-span-12 sm:col-span-6">
                 <label class="form-label">Habilidad</label>
-                <!--<select wire:model="habilidad" class="form-select">
-                    <option value="">Seleccione un opcion</option>
-                    @foreach ($abilities as $ability)
-                        <option value="{{ $ability->id }}">{{ $ability->nombre }}</option>
-                    @endforeach
-                </select>
-            -->
-            <input  type="text" class="form-control"
-                    placeholder="Ingresa tus habilidades">
-            </div>            
+                <input wire:model="habilidad" type="text" class="form-control" placeholder="Ingresa tus habilidades">
+            </div>
             <div class="col-span-12 sm:col-span-3 pt-6">
                 <button type="submit" class="btn btn-secondary">Guardar</button>
             </div>
@@ -34,14 +25,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($abilitiesPerson as $abilityPerson)
+                    @foreach ($abilities as $abbility)
                         <tr>
-                            <td class="border-b dark:border-dark-5">{{ $abilityPerson->id }}</td>
+                            <td class="border-b dark:border-dark-5">{{ $abbility->id }}</td>
                             <td class="border-b dark:border-dark-5">
-                                {{ $abilityPerson->ability->nombre }}
+                                {{ $abbility->descripcion }}
                             </td>
                             <td class="border-b dark:border-dark-5">
-                                
+
                             </td>
                         </tr>
                     @endforeach

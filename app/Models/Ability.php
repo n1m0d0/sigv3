@@ -11,11 +11,6 @@ class Ability extends Model
 
     public function people()
     {
-        return $this->belongsToMany(Person::class);
-    }
-
-    public function vacancies()
-    {
-        return $this->belongsToMany(Vacancy::class);
+        return $this->belongsTo(Person::class);
     }
 }

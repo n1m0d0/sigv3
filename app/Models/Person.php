@@ -46,6 +46,6 @@ class Person extends Model
 
     public function abilities()
     {
-        return $this->belongsToMany(Ability::class);
+        return $this->hasMany(Ability::class);
     }
 }

@@ -54,12 +54,6 @@
                 <div class="side-menu__title"> Vacancias </div>
             </a>
         </li>
-        <li>
-            <a href="{{ route('abilities.vacancy') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="inbox"></i> </div>
-                <div class="side-menu__title"> Habilidades </div>
-            </a>
-        </li>
         @endrole
     </ul>
 </nav>

@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\Ability;
-use App\Models\AbilityPerson as AP;
 use Livewire\Component;
 
 class AbilityPerson extends Component
@@ -18,9 +17,8 @@ class AbilityPerson extends Component
 
     public function render()
     {
-        $abilities = Ability::all();
-        $abilitiesPerson = AP::where('person_id', $this->person_id)->get();
-        return view('livewire.ability-person', compact('abilities', 'abilitiesPerson'));
+        $abilities = Ability::where('person_id', $this->person_id)->get();
+        return view('livewire.ability-person', compact('abilities'));
     }
 
     public function addAbility()
@@ -29,11 +27,11 @@ class AbilityPerson extends Component
             'habilidad' => 'required'
         ]);
 
-        $abilitiesPerson =  new AP();
-        $abilitiesPerson->person_id = $this->person_id;
-        $abilitiesPerson->ability_id = $this->habilidad;
-        $abilitiesPerson->estado = "ACTIVO";
-        $abilitiesPerson->save();
+        $ability =  new Ability();
+        $ability->person_id = $this->person_id;
+        $ability->descripcion = $this->habilidad;
+        $ability->estado = "ACTIVO";
+        $ability->save();
 
         $this->clearAbility();
     }
