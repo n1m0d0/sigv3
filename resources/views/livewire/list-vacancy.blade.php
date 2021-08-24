@@ -1,4 +1,6 @@
 <div>
+    @include('layout.partials.errors')
+    @include('layout.partials.flashMessage')
     @if ($ventana == 1)
         <div class="box py-8 px-6">
             <h1 class="text-xl text-gray-900">Lista de Vacancias Pendientes</h1>
@@ -31,10 +33,31 @@
                                     {{ $vacancy->cantidad }}
                                 </td>
                                 <td class="border-b dark:border-dark-5">
-                                    <a wire:click='searchPeople({{ $vacancy->id }})'
+                                    <!--<a wire:click='searchPeople({{ $vacancy->id }})'
                                         class="flex items-center mr-3 cursor-pointer">
                                         <x-feathericon-file-text class="w-4 h-4 mr-1" /> Generar Lista
-                                    </a>
+                                    </a>-->
+                                    @if ($vacancy->payrolls()->where('estado', 'ACTIVO')->count() == 3)
+                                        <div class="mt-2">
+                                            <div class="form-check">
+                                                <input wire:model='ver' class="form-check-switch" type="checkbox"
+                                                    value="{{ $vacancy->id }}">
+                                                <label class="form-check-label">
+                                                    Ver Lista
+                                                </label>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="mt-2">
+                                            <div class="form-check">
+                                                <input wire:model='vacancia_id' class="form-check-switch"
+                                                    type="checkbox" value="{{ $vacancy->id }}">
+                                                <label class="form-check-label">
+                                                    Generar Lista
+                                                </label>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -44,6 +67,7 @@
         </div>
     @endif
     @if ($ventana == 2)
+
         <div class="box grid grid-cols-12 gap-4 items-center py-8 px-6">
             <h1 class="col-span-12 text-xl font-medium leading-none mt-3 text-center">
                 {{ $vacancia->institution->nombre_comercial }}</h1>
@@ -139,7 +163,8 @@
                                     </ul>
                                 </td>
                                 <td class="border-b dark:border-dark-5">
-                                    <a href="" class="flex items-center mr-3 cursor-pointer">
+                                    <a wire:click='addPayroll({{ $person->id }})'
+                                        class="flex items-center mr-3 cursor-pointer">
                                         <x-feathericon-plus-circle class="w-4 h-4 mr-1" /> Agregar
                                     </a>
                                 </td>
@@ -148,6 +173,50 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+    @endif
+    @if ($ventana == 3)
+        <div class="box mt-2 py-8 px-6">
+            <h1 class="text-lg font-medium leading-none mt-3 text-center">Lista Corta</h1>
+            <div class="overflow-x-auto mt-6">
+                <table class="table">
+                    <thead>
+                        <tr class="bg-gray-700 dark:bg-dark-1 text-white">
+                            <th class="whitespace-nowrap">#</th>
+                            <th class="whitespace-nowrap">Vacancia</th>
+                            <th class="whitespace-nowrap">Nombre completo</th>
+                            <th class="whitespace-nowrap">Estado</th>
+                            <th class="whitespace-nowrap">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($listacorta as $lista)
+                            @if ($lista->estado == 'ACTIVO')
+                                <tr>
+                                    <td class="border-b dark:border-dark-5">{{ $lista->id }}</td>
+                                    <td class="border-b dark:border-dark-5">
+                                        {{ $lista->vacancy->nombre }}
+                                    </td>
+                                    <td class="border-b dark:border-dark-5 text-gray-700 uppercase">
+                                        {{ $lista->person->nombres }} {{ $lista->person->paterno }}
+                                        {{ $lista->person->materno }}
+                                    </td>
+                                    <td class="border-b dark:border-dark-5">
+                                        {{ $lista->estado }}
+                                    </td>
+                                    <td class="border-b dark:border-dark-5">
+                                        <a wire:click='removePayroll({{ $lista->id }})'
+                                            class="flex items-center mr-3 cursor-pointer">
+                                            <x-feathericon-trash class="w-4 h-4 mr-1" /> Quitar
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endif
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
         </div>
     @endif
 </div>

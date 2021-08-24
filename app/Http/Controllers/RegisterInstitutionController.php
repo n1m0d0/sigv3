@@ -57,7 +57,7 @@ class RegisterInstitutionController extends Controller
             $user->assignRole('empresa');
         } catch (\Exception $e) {
             DB::rollback();
-            return redirect()->intended('/')->with("message", "El correo ya esta en uso");
+            return redirect()->intended('/')->with("alert", "El correo ya esta en uso");
         }
 
         DB::commit();

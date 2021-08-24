@@ -48,4 +48,9 @@ class Person extends Model
     {
         return $this->hasMany(Ability::class);
     }
+
+    public function payrolls()
+    {
+        return $this->hasMany(Payroll::class);
+    }
 }

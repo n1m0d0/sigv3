@@ -19,10 +19,9 @@
             <input wire:model='nombreVacacia' type="text" class="form-control" placeholder="Encargado de Almacenes">
         </div>
         <div class="col-span-12 sm:col-span-3">
-            <label class="form-label">Perfil</label>
+            <label class="form-label">Grado Académico</label>
             <select wire:model='gradoAcademico' class="form-select">
                 <option value="">Seleccione un opcion</option>
-                <option>Bachillerato</option>
                 <option>Egresado</option>
                 <option>Técnico</option>
                 <option>Profesional</option>

@@ -23,4 +23,9 @@ class Vacancy extends Model
     {
         return $this->belongsTo(Career::class);
     }
+
+    public function payrolls()
+    {
+        return $this->hasMany(Payroll::class);
+    }
 }
