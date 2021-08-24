@@ -53,4 +53,9 @@ class Person extends Model
     {
         return $this->hasMany(Payroll::class);
     }
+
+    public function contracts()
+    {
+        return $this->hasMany(Contract::class);
+    }
 }

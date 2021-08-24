@@ -38,4 +38,9 @@ class Institution extends Model
     {
         return $this->hasMany(Agreement::class);
     }
+
+    public function contracts()
+    {
+        return $this->hasMany(Contract::class);
+    }
 }

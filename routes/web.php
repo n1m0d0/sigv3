@@ -9,7 +9,7 @@ use App\Http\Controllers\PersonController;
 use App\Http\Controllers\RegisterPersonController;
 use App\Http\Controllers\RegisterInstitutionController;
 use App\Http\Controllers\VacancyInstitutionController;
-use App\Http\Controllers\AbilityVacancyController;
+use App\Http\Controllers\ContractInstitutionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ Route::get('datos-persona', [RegisterPersonController::class, "person"])->name('
 Route::get('habilidades-persona', [AbilityPersonController::class, "index"])->name('abilities.person')->middleware(['auth', 'role:persona']);
 Route::get('datos-empresa', [RegisterInstitutionController::class, "institution"])->name('data.institution')->middleware(['auth', 'role:empresa']);
 Route::get('vacancias', [VacancyInstitutionController::class, "index"])->name('vacancy.institution')->middleware(['auth', 'role:empresa']);
-Route::get('habilidades-vacancia', [AbilityVacancyController::class, "index"])->name('abilities.vacancy')->middleware(['auth', 'role:empresa']);
 
 Route::get('listas-generales', [GeneralListController::class, "index"])->name('general.list')->middleware('auth');
 Route::get('convenios', [AgreementInstitutionController::class, "index"])->name('agreement.institution')->middleware('auth');
+Route::get('contratos', [ContractInstitutionController::class, "index"])->name('contract.institution')->middleware('auth');

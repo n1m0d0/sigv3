@@ -26,6 +26,12 @@
                 <div class="side-menu__title"> Emparejamiento </div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('contract.institution') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__title"> Contratos </div>
+            </a>
+        </li>
         @endrole
         @role('persona')
         <li>
