@@ -33,22 +33,22 @@ class ListVacancy extends Component
             if ($this->vacancia->grado_academico == 'Profesional') {
                 $this->people = Person::whereHas('careers', function ($query) {
                     $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', '!=', 'Egresado')->where('grado_academico', '!=', 'Bachillerato')->where('grado_academico', '!=', 'Técnico');
-                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->get();
+                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO')->get();
             }
             if ($this->vacancia->grado_academico == 'Egresado') {
                 $this->people = Person::whereHas('careers', function ($query) {
                     $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Egresado');
-                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->get();
+                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO')->get();
             }
             if ($this->vacancia->grado_academico == 'Técnico') {
                 $this->people = Person::whereHas('careers', function ($query) {
                     $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Técnico');
-                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->get();
+                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO')->get();
             }
             if ($this->vacancia->grado_academico == 'Bachillerato') {
                 $this->people = Person::whereHas('careers', function ($query) {
                     $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Bachillerato');
-                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->get();
+                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO')->get();
             }
         }
         if($this->ver != null){

@@ -10,6 +10,7 @@ use App\Http\Controllers\RegisterPersonController;
 use App\Http\Controllers\RegisterInstitutionController;
 use App\Http\Controllers\VacancyInstitutionController;
 use App\Http\Controllers\ContractInstitutionController;
+use App\Http\Controllers\ReplacementInstitutionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,4 @@ Route::get('vacancias', [VacancyInstitutionController::class, "index"])->name('v
 Route::get('listas-generales', [GeneralListController::class, "index"])->name('general.list')->middleware('auth');
 Route::get('convenios', [AgreementInstitutionController::class, "index"])->name('agreement.institution')->middleware('auth');
 Route::get('contratos', [ContractInstitutionController::class, "index"])->name('contract.institution')->middleware('auth');
+Route::get('reposiciones', [ReplacementInstitutionController::class, "index"])->name('replacement.institution')->middleware('auth');

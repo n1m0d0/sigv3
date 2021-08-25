@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Package extends Model
+class Replacement extends Model
 {
     use HasFactory;
 
-    public function contracts()
+    public function contract()
     {
-        return $this->hasMany(Contract::class);
+        return $this->belongsTo(Contract::class);
     }
 }

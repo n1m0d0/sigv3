@@ -32,6 +32,38 @@
                 <div class="side-menu__title"> Contratos </div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('replacement.institution') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__title"> Reposicion </div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="box"></i> </div>
+                <div class="side-menu__title"> Reportes <i data-feather="chevron-down" class="side-menu__sub-icon "></i> </div>
+            </a>
+            <ul class="">
+                <li>
+                    <a href="side-menu-dark-dashboard-overview-1.html" class="side-menu">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Side Menu </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="simple-menu-dark-dashboard-overview-1.html" class="side-menu">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Simple Menu </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="top-menu-dark-dashboard-overview-1.html" class="side-menu">
+                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__title"> Top Menu </div>
+                    </a>
+                </li>
+            </ul>
+        </li>
         @endrole
         @role('persona')
         <li>

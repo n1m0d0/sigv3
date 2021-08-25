@@ -53,7 +53,7 @@
     @if ($ventana == 2)
         <h1 class="text-xl text-gray-900"></h1>
         <div class="box py-8 px-6 mt-2">
-            <form wire:submit.prevent='addContrat' enctype="multipart/form-data"
+            <form wire:submit.prevent='addContract' enctype="multipart/form-data"
                 class="intro-y grid grid-cols-12 gap-2 items-center">
                 <div class="col-span-12 sm:col-span-3">
                     <label class="form-label">Persona</label>
@@ -66,12 +66,21 @@
                     </select>
                 </div>
                 <div class="col-span-12 sm:col-span-3">
+                    <label class="form-label">Paquete</label>
+                    <select wire:model="package_id" class="form-select">
+                        <option value="">Seleccione un opcion</option>
+                        @foreach ($packages as $package)
+                            <option value="{{ $package->id }}">{{ $package->nombre }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-span-12 sm:col-span-3">
                     <label class="form-label">Contrato</label>
                     <input wire:model='archivoContrato' type="file" class="form-control">
                 </div>
                 <div class="col-span-12 sm:col-span-3">
                     <label class="form-label">Codigo</label>
-                    <input wire:model='codigoContrato' type="text" class="form-control" placeholder="MPD/INF/001-2021">
+                    <input wire:model='codigo' type="text" class="form-control" placeholder="MPD/INF/001-2021">
                 </div>
                 <div class="col-span-12 sm:col-span-3 pt-6">
                     <button type="submit" class="btn btn-secondary">Guardar</button>

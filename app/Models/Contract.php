@@ -23,4 +23,14 @@ class Contract extends Model
     {
         return $this->belongsTo(Person::class);
     }
+
+    public function package()
+    {
+        return $this->belongsTo(Package::class);
+    }
+
+    public function replacement()
+    {
+        return $this->hasOne(Replacement::class);
+    }
 }
