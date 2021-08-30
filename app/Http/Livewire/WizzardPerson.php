@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Career;
 use App\Models\CareerPerson;
 use App\Models\Contact;
+use App\Models\Contract;
 use App\Models\Decendant;
 use App\Models\Department;
 use App\Models\Experience;
@@ -282,6 +283,7 @@ class WizzardPerson extends Component
             'telefonoContacto' => 'required|numeric'
         ]);
 
+        //$contador = Contact::where('person_id', $this->person_id)->whereNull('institution')->count();
         $contact = new Contact();
         $contact->person_id = $this->person_id;
         $contact->nombre = $this->nombreContacto;
@@ -305,7 +307,7 @@ class WizzardPerson extends Component
 
     public function updateStep3()
     {
-        if ($this->discapacidad) {
+        /*if ($this->discapacidad) {
             $this->validate([
                 'tipoDiscapacidad' => 'required',
                 'archivod' => 'required|mimes:jpg,bmp,png,pdf|max:5120'
@@ -321,7 +323,11 @@ class WizzardPerson extends Component
         $person->step = 3;
         $person->save();
 
-        session()->flash('message', 'Los datos se guardaron correctamente.');
+        session()->flash('message', 'Los datos se guardaron correctamente.');*/
+
+        $person = Person::find($this->person_id);
+        $person->step = 3;
+        $person->save();
 
         $this->step3();
     }

@@ -24,7 +24,7 @@ class AbilityPerson extends Component
     public function addAbility()
     {
         $this->validate([
-            'habilidad' => 'required'
+            'habilidad' => 'required|max:256'
         ]);
 
         $ability =  new Ability();

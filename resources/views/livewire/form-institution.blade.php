@@ -50,7 +50,7 @@
         </div>
     </form>
 
-    <h2 class="text-lg uppercase text-gray-900 py-4 text-left mt-4">Registro de Sucursales: </h2>
+    <h2 class="text-lg uppercase text-gray-900 py-4 text-left mt-4">Registro de Casa Matriz y Sucursales: </h2>
     <form wire:submit.prevent='addBranch' class="intro-y grid grid-cols-12 gap-2 items-center">
         <div class="col-span-12 sm:col-span-3">
             <label class="form-label">Departamento</label>

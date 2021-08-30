@@ -31,9 +31,16 @@
             <div class="h-screen xl:h-auto flex py-5 xl:py-0 my-10 xl:my-0">
                 <div
                     class="my-auto mx-auto xl:ml-20 bg-white dark:bg-dark-1 xl:bg-transparent px-5 sm:px-8 py-8 xl:p-0 rounded-md shadow-md xl:shadow-none w-full sm:w-3/4 lg:w-2/4 xl:w-auto">
-                    <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">Iniciar Sesión</h2>
+                    <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left mt-8">Registro</h2>
                     @include('layout.partials.errors')
                     @include('layout.partials.flashMessage')
+                    <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
+                        <a class="btn btn-outline-secondary py-3 px-4 w-full xl:w-80 mt-3 xl:mt-2 align-top"
+                            href="{{ route('form.person') }}">Registrarse Jóvenes</a>
+                        <a class="btn btn-outline-secondary py-3 px-4 w-full xl:w-80 mt-3 xl:mt-2 align-top"
+                            href="{{ route('form.institution') }}">Registrarse Empresa</a>
+                    </div>
+                    <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left mt-8">Iniciar Sesión</h2>
                     <form action="{{ route('auth.login') }}" method="POST">
                         @method('POST')
                         <div class="intro-x mt-8">
@@ -54,12 +61,7 @@
                         </div>
                     </form>
 
-                    <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                        <a class="btn btn-outline-secondary py-3 px-4 w-full xl:w-80 mt-3 xl:mt-0 align-top"
-                            href="{{ route('form.person') }}">Registrarse Jóvenes</a>
-                        <a class="btn btn-outline-secondary py-3 px-4 w-full xl:w-80 mt-3 xl:mt-0 align-top"
-                            href="{{ route('form.institution') }}">Registrarse Empresa</a>
-                    </div>
+                    
                 </div>
             </div>
             <!-- END: Login Form -->

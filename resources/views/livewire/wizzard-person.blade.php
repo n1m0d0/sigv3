@@ -2,17 +2,17 @@
     @include('layout.partials.errors')
     @include('layout.partials.flashMessage')
     @if ($step == 1)
-        <div class="intro-y box py-10 sm:py-20 mt-5">
+        <div class="box py-10 sm:py-20 mt-5">
             <div class="flex justify-center">
-                <button type="button" class="intro-y w-10 h-10 rounded-full btn btn-primary mx-2">1</button>
+                <button type="button" class="w-10 h-10 rounded-full btn btn-primary mx-2">1</button>
                 <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">2</button>
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">2</button>
                 <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">3</button>
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">3</button>
                 <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">4</button>
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">4</button>
                 <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">5</button>
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">5</button>
             </div>
             <div class="px-5 mt-10">
                 <div class="font-medium text-center text-lg">Completa datos personales</div>
@@ -20,11 +20,11 @@
             <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-gray-200 dark:border-dark-5">
                 <div class="font-medium text-base">Datos complementarios</div>
                 <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">CI</label>
                         <input wire:model="ci" type="text" class="form-control" placeholder="1234567">
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">Expedido</label>
                         <select wire:model="expedido" class="form-select">
                             <option value="">Seleccione un opcion</option>
@@ -39,7 +39,7 @@
                             <option>PD</option>
                         </select>
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label>Genero</label>
                         <div class="flex flex-col sm:flex-row mt-2">
                             <div class="form-check mr-2">
@@ -54,15 +54,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">Edad</label>
                         <input wire:model="edad" type="text" class="form-control" placeholder="22">
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">Fecha de Nacimiento</label>
                         <input wire:model="nacimiento" class="form-control block mx-auto" type="date">
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">Departamento</label>
                         <select wire:model="departamento" class="form-select">
                             <option value="">Seleccione un opcion</option>
@@ -71,11 +71,11 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-6">
+                    <div class="col-span-12 sm:col-span-6">
                         <label class="form-label">Direccion</label>
                         <input wire:model="direccion" type="text" class="form-control" placeholder="Av. central">
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">Estado Civil</label>
                         <select wire:model='estadoCivil' class="form-select">
                             <option value="">Seleccione un opcion</option>
@@ -85,7 +85,7 @@
                             <option>Divorciado</option>
                         </select>
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label>Es Madre/Padre/Ambos</label>
                         <div class="flex flex-col sm:flex-row mt-2">
                             <div class="form-check mr-2">
@@ -100,31 +100,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">Telefono</label>
                         <input wire:model="telefonoPersona" type="text" class="form-control" placeholder="2212563">
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                     </div>
                     @if ($hijos == 1)
-                        <div class="intro-y grid grid-cols-12 gap-4 items-center col-span-12 sm:col-span-12">
-                            <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="grid grid-cols-12 gap-4 items-center col-span-12 sm:col-span-12">
+                            <div class="col-span-12 sm:col-span-3">
                                 <label class="form-label">Nombre del hijo(a)</label>
                                 <input wire:model="nombreHijo" type="text" class="form-control" placeholder="jose">
                             </div>
-                            <div class="intro-y col-span-12 sm:col-span-3">
+                            <div class="col-span-12 sm:col-span-3">
                                 <label class="form-label">Fecha de Nacimiento</label>
                                 <input wire:model="nacimientoHijo" class="form-control block mx-auto" type="date">
                             </div>
-                            <div class="intro-y col-span-12 sm:col-span-3">
+                            <div class="col-span-12 sm:col-span-3">
                                 <label class="form-label">Certificado</label>
                                 <input wire:model='archivoHijo' type="file" class="form-control" placeholder="22">
                             </div>
-                            <div class="intro-y col-span-12 sm:col-span-3 pt-6">
+                            <div class="col-span-12 sm:col-span-3 pt-6">
                                 <button wire:click='saveHijo' class="btn btn-secondary">Añadir</button>
                             </div>
                             <div class="col-span-12 overflow-x-auto pt-4">
-                                <table class="table intro-y col-span-12 sm:col-span-12">
+                                <table class="table col-span-12 sm:col-span-12">
                                     <thead>
                                         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                                             <th class="whitespace-nowrap">#</th>
@@ -150,7 +150,7 @@
                             </div>
                         </div>
                     @endif
-                    <div class="intro-y col-span-12 sm:col-span-4">
+                    <div class="col-span-12 sm:col-span-4">
                         <label class="form-label">Dificultad para conseguir
                             trabajo</label>
                         <select wire:model="problema" class="form-select">
@@ -160,16 +160,16 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-4">
+                    <div class="col-span-12 sm:col-span-4">
                         <label class="form-label">Detalle</label>
                         <input wire:model='detalle' type="text" class="form-control"
                             placeholder="Detalle de la dificultad">
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-4 pt-6">
+                    <div class="col-span-12 sm:col-span-4 pt-6">
                         <button wire:click='saveDifficulty' class="btn btn-secondary">Añadir</button>
                     </div>
                     <div class="col-span-12 overflow-x-auto pt-4">
-                        <table class="table intro-y col-span-12 sm:col-span-12">
+                        <table class="table col-span-12 sm:col-span-12">
                             <thead>
                                 <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                                     <th class="whitespace-nowrap">#</th>
@@ -189,31 +189,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
-                        <button wire:click="updatePerson" class="btn btn-primary w-24 ml-2">Next</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @endif
-    @if ($step == 2)
-        <div class="intro-y box py-10 sm:py-20 mt-5">
-            <div class="flex justify-center">
-                <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">1</button>
-                <button type="button" class="intro-y w-10 h-10 rounded-full btn btn-primary mx-2">2</button>
-                <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">3</button>
-                <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">4</button>
-                <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">5</button>
-            </div>
-            <div class="px-5 mt-10">
-            </div>
-            <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-gray-200 dark:border-dark-5">
-                <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                    <div class="intro-y col-span-12 sm:col-span-6">
+                    <div class="col-span-12 sm:col-span-6">
                         <label>Presenta alguna Discapacidad</label>
                         <div class="flex flex-col sm:flex-row mt-2">
                             <div class="form-check mr-2">
@@ -231,7 +207,7 @@
                     @if ($discapacidad)
                         <form class="col-span-12 gap-2 sm:col-span-12 flex items-center"
                             wire:submit.prevent="updateDiscapacidad" enctype="multipart/form-data">
-                            <div class="intro-y col-span-12 sm:col-span-3">
+                            <div class="col-span-12 sm:col-span-3">
                                 <label for="input-wizard-3" class="form-label">Cual?</label>
                                 <select wire:model="tipoDiscapacidad" class="form-select">
                                     <option value="">Seleccione un opcion</option>
@@ -244,37 +220,63 @@
                                     <option>Múltiple</option>
                                 </select>
                             </div>
-                            <div class="intro-y col-span-12 sm:col-span-3">
+                            <div class="col-span-12 sm:col-span-3">
                                 <label for="input-wizard-3" class="form-label">Adjuntar</label>
                                 <input wire:model='archivod' type="file" class="form-control" placeholder="22">
                             </div>
-                            <div class="intro-y col-span-12 sm:col-span-3 pt-6">
+                            <div class="col-span-12 sm:col-span-3 pt-6">
                                 <button type="submit" class="btn btn-secondary">Guardar</button>
                             </div>
                         </form>
                     @endif
+                    <div class="col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                        <button wire:click="updatePerson" class="btn btn-primary w-24 ml-2">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+    @if ($step == 2)
+        <div class="box py-10 sm:py-20 mt-5">
+            <div class="flex justify-center">
+                <button type="button"
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">1</button>
+                <button type="button" class="intro-y w-10 h-10 rounded-full btn btn-primary mx-2">2</button>
+                <button type="button"
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">3</button>
+                <button type="button"
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">4</button>
+                <button type="button"
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">5</button>
+            </div>
+            <div class="px-5 mt-10">
+                <div class="font-medium text-center text-lg">Datos de Referencia Personal</div>
+            </div>
+            <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-gray-200 dark:border-dark-5">
+                <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
+                    
                     <div class="font-medium text-justify text-lg col-span-12 sm:col-span-12">Persona de Contacto</div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">Nombres</label>
                         <input wire:model='nombreContacto' type="text" class="form-control" placeholder="Jorge">
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">Apellido Paterno</label>
                         <input wire:model='paternoContacto' type="text" class="form-control" placeholder="Perez">
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">Apellido Materno</label>
                         <input wire:model='maternoContacto' type="text" class="form-control" placeholder="Perez">
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3">
+                    <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">Telefono</label>
                         <input wire:model='telefonoContacto' type="text" class="form-control" placeholder="73087144">
                     </div>
-                    <div class="intro-y col-span-12 sm:col-span-3 pt-6">
+                    <div class="col-span-12 sm:col-span-3 pt-6">
                         <button wire:click='contactoPersonal' class="btn btn-secondary">Añadir</button>
                     </div>
                     <div class="col-span-12 overflow-x-auto pt-4">
-                        <table class="table intro-y col-span-12 sm:col-span-12">
+                        <table class="table col-span-12 sm:col-span-12">
                             <thead>
                                 <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                                     <th class="whitespace-nowrap">#</th>
@@ -294,7 +296,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                    <div class="col-span-12 flex items-center justify-center sm:justify-end mt-5">
                         <button type="button" wire:click="step1" class="btn btn-secondary w-24">Previous</button>
                         <button type="button" wire:click="updateStep3" class="btn btn-primary w-24 ml-2">Next</button>
                     </div>
@@ -304,29 +306,29 @@
     @endif
     @if ($step == 3)
         <form wire:submit.prevent="formacion" enctype="multipart/form-data">
-            <div class="intro-y box py-10 sm:py-20 mt-5">
+            <div class="box py-10 sm:py-20 mt-5">
                 <div class="flex justify-center">
                     <button type="button"
-                        class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">1</button>
+                        class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">1</button>
                     <button type="button"
-                        class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">2</button>
+                        class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">2</button>
                     <button type="button" class="intro-y w-10 h-10 rounded-full btn btn-primary mx-2">3</button>
                     <button type="button"
-                        class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">4</button>
+                        class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">4</button>
                     <button type="button"
-                        class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">5</button>
+                        class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">5</button>
                 </div>
                 <div class="px-5 mt-10">
                     <div class="font-medium text-center text-lg">Formacion Profesional</div>
                 </div>
                 <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-gray-200 dark:border-dark-5">
                     <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Institución</label>
                             <input wire:model='institutionFormacion' type="text" class="form-control"
                                 placeholder="Univalle">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Carrera</label>
                             <select wire:model="carrera" class="form-select">
                                 <option value="">Seleccione un opcion</option>
@@ -335,7 +337,7 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Grado Académico</label>
                             <select wire:model='gradoFormacion' class="form-select">
                                 <option value="">Seleccione un opcion</option>
@@ -349,19 +351,19 @@
                                 <option>Especialidad</option>
                             </select>
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Fecha de Titulación / Egreso</label>
                             <input wire:model='egresoFormacion' class="form-control block mx-auto" type="date">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Titulo / Certificado Académico</label>
                             <input wire:model='archivoFormacion' type="file" class="form-control">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3 pt-6">
+                        <div class="col-span-12 sm:col-span-3 pt-6">
                             <button type="submit" class="btn btn-secondary">Añadir</button>
                         </div>
                         <div class="col-span-12 overflow-x-auto pt-4">
-                            <table class="table intro-y col-span-12 sm:col-span-12">
+                            <table class="table col-span-12 sm:col-span-12">
                                 <thead>
                                     <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                                         <th class="whitespace-nowrap">#</th>
@@ -390,7 +392,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                        <div class="col-span-12 flex items-center justify-center sm:justify-end mt-5">
                             <button type="button" wire:click='step2' class="btn btn-secondary w-24">Previous</button>
                             <button type="button" wire:click='updateStep4'
                                 class="btn btn-primary w-24 ml-2">Next</button>
@@ -401,17 +403,17 @@
         </form>
     @endif
     @if ($step == 4)
-        <div class="intro-y box py-10 sm:py-20 mt-5">
+        <div class="box py-10 sm:py-20 mt-5">
             <div class="flex justify-center">
                 <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">1</button>
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">1</button>
                 <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">2</button>
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">2</button>
                 <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">3</button>
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">3</button>
                 <button type="button" class="intro-y w-10 h-10 rounded-full btn btn-primary mx-2">4</button>
                 <button type="button"
-                    class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">5</button>
+                    class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">5</button>
             </div>
             <div class="px-5 mt-10">
                 <div class="font-medium text-center text-lg">Experiencia Laboral</div>
@@ -420,28 +422,28 @@
                 <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
                     <form class="col-span-12 grid grid-cols-12 gap-2 sm:col-span-12 flex items-center"
                         wire:submit.prevent="experiencia" enctype="multipart/form-data">
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Institución</label>
                             <input wire:model='institutionLaboral' type="text" class="form-control" placeholder="EPSAS">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Cargo</label>
                             <input wire:model='cargoLaboral' type="text" class="form-control" placeholder="Analista">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Años de Experiencia</label>
-                            <input wire:model='experienciaLaboral' type="text" class="form-control" placeholder="3">
+                            <input wire:model='experienciaLaboral' type="text" class="form-control" placeholder="Numero entero ejemplo 6">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Certificado de trabajo</label>
                             <input wire:model='archivoLaboral' type="file" class="form-control" placeholder="22">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3 pt-6">
+                        <div class="col-span-12 sm:col-span-3 pt-6">
                             <button type="submit" class="btn btn-secondary">Añadir</button>
                         </div>
                     </form>
                     <div class="col-span-12 overflow-x-auto pt-4">
-                        <table class="table intro-y col-span-12 sm:col-span-12">
+                        <table class="table col-span-12 sm:col-span-12">
                             <thead>
                                 <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                                     <th class="whitespace-nowrap">#</th>
@@ -467,7 +469,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                    <div class="col-span-12 flex items-center justify-center sm:justify-end mt-5">
                         <button wire:click='step3' class="btn btn-secondary w-24">Previous</button>
                         <button wire:click="updateStep5" class="btn btn-primary w-24 ml-2">Next</button>
                     </div>
@@ -477,50 +479,50 @@
     @endif
     @if ($step == 5)
         <form wire:submit.prevent="submit">
-            <div class="intro-y box py-10 sm:py-20 mt-5">
+            <div class="box py-10 sm:py-20 mt-5">
                 <div class="flex justify-center">
                     <button type="button"
-                        class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">1</button>
+                        class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">1</button>
                     <button type="button"
-                        class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">2</button>
+                        class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">2</button>
                     <button type="button"
-                        class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">3</button>
+                        class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">3</button>
                     <button type="button"
-                        class="intro-y w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">4</button>
+                        class="w-10 h-10 rounded-full btn bg-gray-200 dark:bg-dark-1 text-gray-600 mx-2">4</button>
                     <button type="button" class="intro-y w-10 h-10 rounded-full btn btn-primary mx-2">5</button>
                 </div>
                 <div class="px-5 mt-10">
-                    <div class="font-medium text-center text-lg">Datos de referencia laboral</div>
+                    <div class="font-medium text-center text-lg">Datos de Referencia Laboral</div>
                 </div>
                 <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-gray-200 dark:border-dark-5">
                     <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Institución</label>
                             <input wire:model='institutionReferencia' type="text" class="form-control"
                                 placeholder="EPSAS">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Nombres</label>
                             <input wire:model='nombreReferencia' type="text" class="form-control" placeholder="Jorge">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Apellido Paterno</label>
                             <input wire:model='paternoReferencia' type="text" class="form-control" placeholder="Vargas">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Apellido Materno</label>
                             <input wire:model='maternoReferencia' type="text" class="form-control" placeholder="Pozo">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-3">
+                        <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Teléfono</label>
                             <input wire:model='telefonoReferencia' type="text" class="form-control"
                                 placeholder="2214589">
                         </div>
-                        <div class="intro-y col-span-12 sm:col-span-1 pt-6">
+                        <div class="col-span-12 sm:col-span-1 pt-6">
                             <a wire:click='referencia' class="btn btn-secondary">Añadir</a>
                         </div>
                         <div class="col-span-12 overflow-x-auto pt-4">
-                            <table class="table intro-y col-span-12 sm:col-span-12">
+                            <table class="table col-span-12 sm:col-span-12">
                                 <thead>
                                     <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                                         <th class="whitespace-nowrap">#</th>
@@ -546,7 +548,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="intro-y col-span-12 flex items-center justify-center sm:justify-end mt-5">
+                        <div class="col-span-12 flex items-center justify-center sm:justify-end mt-5">
                             <button type="button" wire:click="step4" class="btn btn-secondary w-24">Previous</button>
                             <a href="{{ route('page.dashboard') }}" class="btn btn-primary w-24 ml-2">Finalizar</a>
                         </div>
