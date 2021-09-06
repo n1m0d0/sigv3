@@ -28,6 +28,7 @@ class FormInstitution extends Component
     public $emailRepresentante;
     public $telefonoRepresentante;
     //sucursales
+    public $tipo;
     public $departamento;
     public $direccion;
     public $telefono;
@@ -96,6 +97,7 @@ class FormInstitution extends Component
 
     public function addBranch(){
         $this->validate([
+            'tipo' => 'required',
             'departamento' => 'required',
             'direccion' => 'required',
             'telefono' => 'required|numeric'
@@ -106,6 +108,7 @@ class FormInstitution extends Component
         $branch->department_id = $this->departamento;
         $branch->direccion = $this->direccion;
         $branch->telefono = $this->telefono;
+        $branch->tipo = $this->tipo;
         $branch->estado = "ACTIVO";
         $branch->save();
 

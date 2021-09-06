@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use App\Models\Career;
 use App\Models\CareerPerson;
 use App\Models\Contact;
-use App\Models\Contract;
 use App\Models\Decendant;
 use App\Models\Department;
 use App\Models\Experience;
@@ -201,7 +200,7 @@ class WizzardPerson extends Component
             'telefonoPersona' => 'required|numeric'
         ]);
 
-        /*$person = Person::find($this->person_id);
+        $person = Person::find($this->person_id);
         $person->ci = $this->ci;
         $person->expedido = $this->expedido;
         $person->genero = $this->genero;
@@ -217,9 +216,9 @@ class WizzardPerson extends Component
 
         session()->flash('message', 'Los datos se guardaron correctamente.');
 
-        $this->step2();*/
+        $this->step2();
 
-        $response = Http::post('https://sig.planificacion.gob.bo:8080/pge/v1/soapapiservicioexterno/consultadatopersonacertificacion', [
+        /*$response = Http::post('https://sig.planificacion.gob.bo:8080/pge/v1/soapapiservicioexterno/consultadatopersonacertificacion', [
             'numeroDocumento' => $this->ci
         ])->throw()->json();
 
@@ -247,7 +246,7 @@ class WizzardPerson extends Component
             $person->validacion_segip = 0;
             $person->save();
             session()->flash('alert', 'El carnet de identidad no es valido');
-        }
+        }*/
     }
 
     public function updateDiscapacidad()
@@ -283,16 +282,20 @@ class WizzardPerson extends Component
             'telefonoContacto' => 'required|numeric'
         ]);
 
-        //$contador = Contact::where('person_id', $this->person_id)->whereNull('institution')->count();
-        $contact = new Contact();
-        $contact->person_id = $this->person_id;
-        $contact->nombre = $this->nombreContacto;
-        $contact->paterno = $this->paternoContacto;
-        $contact->materno = $this->maternoContacto;
-        $contact->telefono = $this->telefonoContacto;
-        $contact->save();
+        $contador = Contact::where('person_id', $this->person_id)->where('estado', "ACTIVO")->whereNull('institution')->count();
+        if ($contador >= 3) {
+            session()->flash('alert', 'Solo puede tener 3 contactos registrados.');
+        } else {
+            $contact = new Contact();
+            $contact->person_id = $this->person_id;
+            $contact->nombre = $this->nombreContacto;
+            $contact->paterno = $this->paternoContacto;
+            $contact->materno = $this->maternoContacto;
+            $contact->telefono = $this->telefonoContacto;
+            $contact->save();
 
-        session()->flash('message', 'Los datos se guardaron correctamente.');
+            session()->flash('message', 'Los datos se guardaron correctamente.');
+        }
 
         $this->defaultContactoPersonal();
     }

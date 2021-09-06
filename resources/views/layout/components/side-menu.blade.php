@@ -5,37 +5,13 @@
     </a>
     <div class="side-nav__devider my-6"></div>
     <ul>
+        @role('admin')
         <li>
             <a href="{{ route('page.dashboard') }}" class="side-menu side-menu--active">
                 <div class="side-menu__icon"> <i data-feather="home"></i> </div>
                 <div class="side-menu__title">
                     Dashboard
                 </div>
-            </a>
-        </li>
-        @role('admin')
-        <li>
-            <a href="{{ route('agreement.institution') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                <div class="side-menu__title"> Convenios </div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('general.list') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                <div class="side-menu__title"> Emparejamiento </div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('contract.institution') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                <div class="side-menu__title"> Contratos </div>
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('replacement.institution') }}" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                <div class="side-menu__title"> Reposicion </div>
             </a>
         </li>
         <li>
@@ -63,6 +39,32 @@
                     </a>
                 </li>
             </ul>
+        </li>
+        @endrole
+        @role('oficial')
+        <li>
+            <a href="{{ route('agreement.institution') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__title"> Convenios </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('general.list') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__title"> Emparejamiento </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('contract.institution') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__title"> Contratos </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('replacement.institution') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__title"> Reposicion </div>
+            </a>
         </li>
         @endrole
         @role('persona')

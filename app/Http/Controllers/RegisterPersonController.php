@@ -52,6 +52,9 @@ class RegisterPersonController extends Controller
             $user->codigo = Str::uuid()->toString();
             $user->save();
 
+
+            //Mail::to($request->email)->send(new Confirmation($user));
+
             $user->assignRole('persona');
         } catch (\Exception $e) {
             DB::rollback();
@@ -59,16 +62,6 @@ class RegisterPersonController extends Controller
         }
 
         DB::commit();
-        
-        /*$subject = "Prueba";
-        $for = $request->email;
-        Mail::send('layout.email',$request->all(), function($msj) use($subject,$for){
-            $msj->from("registro.pge@planificacion.gob.bo","SIGv2");
-            $msj->subject($subject);
-            $msj->to($for);
-        });*/
-
-        //Mail::to("receiver@example.com")->send(new Confirmation($user));
 
         return redirect()->intended('/')->with("message", "Registrado correctamente");
     }

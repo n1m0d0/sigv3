@@ -31,5 +31,21 @@ class OfficialSeeder extends Seeder
         $user->save();
 
         $user->assignRole('admin');
+
+        $official = new Official();
+        $official->nombres = "oficial";
+        $official->paterno = "oficial";
+        $official->materno = "oficial";
+        $official->save();
+
+        $user = new User();
+        $user->official_id = $official->id;
+        $user->email = "oficial@sigv3.com";
+        $user->codigo = Str::uuid()->toString();
+        $user->activation = 0;
+        $user->password = bcrypt("0f1c14l");
+        $user->save();
+
+        $user->assignRole('oficial');
     }
 }

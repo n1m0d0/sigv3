@@ -5,11 +5,11 @@
     <form wire:submit.prevent='addVacancy' enctype="multipart/form-data"
         class="intro-y grid grid-cols-12 gap-2 items-center">
         <div class="col-span-12 sm:col-span-3">
-            <label class="form-label">Sucursal</label>
+            <label class="form-label">Casa Matriz / Sucursales</label>
             <select wire:model="sucursal" class="form-select">
                 <option value="">Seleccione un opcion</option>
                 @foreach ($branches as $branch)
-                    <option value="{{ $branch->id }}">{{ $branch->department->nombre }} - {{ $branch->direccion }}
+                    <option value="{{ $branch->id }}">{{ $branch->tipo }} - {{ $branch->department->nombre }} - {{ $branch->direccion }}
                     </option>
                 @endforeach
             </select>
@@ -89,4 +89,6 @@
             </tbody>
         </table>
     </div>
+    <a class="btn btn-outline-primary py-3 px-4 xl:w-80 mt-3 xl:mt-2 align-left"
+                            href="{{ route('page.dashboard') }}">Finalizar</a>
 </div>

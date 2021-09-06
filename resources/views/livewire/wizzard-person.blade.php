@@ -254,7 +254,7 @@
             </div>
             <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-gray-200 dark:border-dark-5">
                 <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
-                    
+
                     <div class="font-medium text-justify text-lg col-span-12 sm:col-span-12">Persona de Contacto</div>
                     <div class="col-span-12 sm:col-span-3">
                         <label class="form-label">Nombres</label>
@@ -269,7 +269,7 @@
                         <input wire:model='maternoContacto' type="text" class="form-control" placeholder="Perez">
                     </div>
                     <div class="col-span-12 sm:col-span-3">
-                        <label class="form-label">Telefono</label>
+                        <label class="form-label">Teléfono / Celular</label>
                         <input wire:model='telefonoContacto' type="text" class="form-control" placeholder="73087144">
                     </div>
                     <div class="col-span-12 sm:col-span-3 pt-6">
@@ -281,7 +281,7 @@
                                 <tr class="bg-gray-700 dark:bg-dark-1 text-white">
                                     <th class="whitespace-nowrap">#</th>
                                     <th class="whitespace-nowrap">Nombre Completo</th>
-                                    <th class="whitespace-nowrap">Telefono</th>
+                                    <th class="whitespace-nowrap">Teléfono / Celular</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -320,6 +320,7 @@
                 </div>
                 <div class="px-5 mt-10">
                     <div class="font-medium text-center text-lg">Formacion Profesional</div>
+                    <div class="font-medium text-center text-lg">Especifique su Formación</div>
                 </div>
                 <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-gray-200 dark:border-dark-5">
                     <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5">
@@ -345,10 +346,6 @@
                                 <option>Egresado</option>
                                 <option>Licenciatura</option>
                                 <option>Técnico</option>
-                                <option>Diplomado</option>
-                                <option>Maestría</option>
-                                <option>Doctorado</option>
-                                <option>Especialidad</option>
                             </select>
                         </div>
                         <div class="col-span-12 sm:col-span-3">
@@ -378,9 +375,10 @@
                                     @foreach ($studies as $study)
                                         <tr>
                                             <td class="border-b dark:border-dark-5">{{ $study->id }}</td>
-                                            <td class="border-b dark:border-dark-5">{{ $study->career->nombre }}</td>
                                             <td class="border-b dark:border-dark-5">
                                                 {{ $study->institution }}</td>
+                                            <td class="border-b dark:border-dark-5">{{ $study->career->nombre }}
+                                            </td>
                                             <td class="border-b dark:border-dark-5">{{ $study->grado_academico }}
                                             </td>
                                             <td class="border-b dark:border-dark-5">{{ $study->egreso }}</td>
@@ -424,7 +422,8 @@
                         wire:submit.prevent="experiencia" enctype="multipart/form-data">
                         <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Institución</label>
-                            <input wire:model='institutionLaboral' type="text" class="form-control" placeholder="EPSAS">
+                            <input wire:model='institutionLaboral' type="text" class="form-control"
+                                placeholder="EPSAS">
                         </div>
                         <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Cargo</label>
@@ -432,7 +431,8 @@
                         </div>
                         <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Años de Experiencia</label>
-                            <input wire:model='experienciaLaboral' type="text" class="form-control" placeholder="Numero entero ejemplo 6">
+                            <input wire:model='experienciaLaboral' type="text" class="form-control"
+                                placeholder="Numero entero ejemplo 6">
                         </div>
                         <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Certificado de trabajo</label>
@@ -503,18 +503,21 @@
                         </div>
                         <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Nombres</label>
-                            <input wire:model='nombreReferencia' type="text" class="form-control" placeholder="Jorge">
+                            <input wire:model='nombreReferencia' type="text" class="form-control"
+                                placeholder="Jorge">
                         </div>
                         <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Apellido Paterno</label>
-                            <input wire:model='paternoReferencia' type="text" class="form-control" placeholder="Vargas">
+                            <input wire:model='paternoReferencia' type="text" class="form-control"
+                                placeholder="Vargas">
                         </div>
                         <div class="col-span-12 sm:col-span-3">
                             <label class="form-label">Apellido Materno</label>
-                            <input wire:model='maternoReferencia' type="text" class="form-control" placeholder="Pozo">
+                            <input wire:model='maternoReferencia' type="text" class="form-control"
+                                placeholder="Pozo">
                         </div>
                         <div class="col-span-12 sm:col-span-3">
-                            <label class="form-label">Teléfono</label>
+                            <label class="form-label">Teléfono / Celular</label>
                             <input wire:model='telefonoReferencia' type="text" class="form-control"
                                 placeholder="2214589">
                         </div>
@@ -530,7 +533,7 @@
                                         <th class="whitespace-nowrap">Nombres</th>
                                         <th class="whitespace-nowrap">Apellido Paterno</th>
                                         <th class="whitespace-nowrap">Apellido Materno</th>
-                                        <th class="whitespace-nowrap">Teléfono</th>
+                                        <th class="whitespace-nowrap">Teléfono / Celular</th>
                                     </tr>
                                 </thead>
                                 <tbody>

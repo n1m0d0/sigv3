@@ -21,6 +21,7 @@ class CreateContactsTable extends Migration
             $table->string('paterno');
             $table->string('materno');
             $table->string('telefono');
+            $table->string('estado')->default('ACTIVO');
             $table->timestamps();
 
             $table->foreign('person_id')->references('id')->on('people');
