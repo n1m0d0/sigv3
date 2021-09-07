@@ -62,6 +62,11 @@
                         <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Help </a>
                 </div>
                 -->
+                <div class="p-2">
+                    <a href="{{ route('auth.updatePassword') }}"
+                        class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
+                        <i data-feather="lock" class="w-4 h-4 mr-2"></i> Cambiar Contraseña </a>
+                </div>
                 <div class="p-2 border-t border-theme-27 dark:border-dark-3">
                     <a href=""
                         class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md"

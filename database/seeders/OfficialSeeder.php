@@ -26,7 +26,7 @@ class OfficialSeeder extends Seeder
         $user->official_id = $official->id;
         $user->email = "admin@sigv3.com";
         $user->codigo = Str::uuid()->toString();
-        $user->activation = 0;
+        $user->activation = 1;
         $user->password = bcrypt("515t3m45");
         $user->save();
 
@@ -42,7 +42,7 @@ class OfficialSeeder extends Seeder
         $user->official_id = $official->id;
         $user->email = "oficial@sigv3.com";
         $user->codigo = Str::uuid()->toString();
-        $user->activation = 0;
+        $user->activation = 1;
         $user->password = bcrypt("0f1c14l");
         $user->save();
 

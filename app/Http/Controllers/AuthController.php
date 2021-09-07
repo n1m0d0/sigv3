@@ -15,7 +15,7 @@ class AuthController extends Controller
         ])) {
             $request->session()->regenerate();
 
-            if(auth()->user()->activation == 0) {
+            if(auth()->user()->activation == 1) {
                 if(auth()->user()->person_id != null)
                 {
                     return redirect()->route('data.person');
@@ -52,5 +52,10 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect()->intended('/');
+    }
+
+    public function updatePassword()
+    {
+        return view('pages.updatePassword');
     }
 }

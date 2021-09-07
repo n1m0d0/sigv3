@@ -52,6 +52,7 @@ class RegisterInstitutionController extends Controller
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
             $user->codigo = Str::uuid()->toString();
+            $user->activation = 1;
             $user->save();
 
             $user->assignRole('empresa');

@@ -15,6 +15,12 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('form.official') }}" class="side-menu">
+                <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                <div class="side-menu__title"> Oficial </div>
+            </a>
+        </li>
+        <li>
             <a href="javascript:;" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="box"></i> </div>
                 <div class="side-menu__title"> Reportes <i data-feather="chevron-down" class="side-menu__sub-icon "></i> </div>
