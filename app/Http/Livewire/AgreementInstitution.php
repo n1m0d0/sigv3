@@ -46,7 +46,7 @@ class AgreementInstitution extends Component
                 $agreements = Agreement::all();
             }
         }
-        $institutions = Institution::where('estado', 'ACTIVO')->get();
+        $institutions = Institution::where('estado', 'REGISTRADO')->get();
         return view('livewire.agreement-institution', compact('agreements', 'institutions'));
     }
 
@@ -64,6 +64,10 @@ class AgreementInstitution extends Component
         $agreement->convenio = $this->archivoConvenio->store('public');
         $agreement->user_id = $this->usuario;
         $agreement->save();
+
+        $institution = Institution::find($this->institution);
+        $institution->estado = "ACTIVO";
+        $institution->save();
 
         session()->flash('message', 'Los datos se guardaron correctamente.');
 
@@ -86,6 +90,12 @@ class AgreementInstitution extends Component
         $agreement = Agreement::find($id);
         $agreement->estado = "INACTIVO";
         $agreement->save();
+
+        $institution = Institution::find($agreement->institution->id);
+        $institution->estado = "REGISTRADO";
+        $institution->save();
+
+        session()->flash('message', 'Los datos se guardaron correctamente.');
     }
 
     public function defaultFilters()
