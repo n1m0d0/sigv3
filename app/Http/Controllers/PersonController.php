@@ -14,8 +14,7 @@ class PersonController extends Controller
      */
     public function index()
     {
-        $people = Person::all();
-        return view('pages.person', compact('people'));
+        return view('pages.person');
     }
 
     /**

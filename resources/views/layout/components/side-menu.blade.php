@@ -29,10 +29,9 @@
             </a>
             <ul class="">
                 <li>
-                    <a href=" side-menu-dark-dashboard-overview-1.html"
-                class="side-menu">
+                    <a href=" {{ route('report.person') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                <div class="side-menu__title"> Side Menu </div>
+                <div class="side-menu__title"> Persona </div>
                 </a>
         </li>
         <li>

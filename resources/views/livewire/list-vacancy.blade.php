@@ -158,6 +158,9 @@
                                         @foreach ($person->careers as $career)
                                             <li>
                                                 {{ $career->nombre }}
+                                                <a class="flex cursor-pointer" wire:click="downloadFile({{ $career->id }}, {{ $person->id }})">
+                                                    <x-feathericon-hard-drive class="w-4 h-4 mr-2" /> Descargar
+                                                </a>
                                             </li>
                                         @endforeach
                                     </ul>

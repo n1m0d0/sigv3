@@ -8,9 +8,13 @@ use App\Models\Payroll;
 use App\Models\Person;
 use App\Models\Vacancy;
 use Livewire\Component;
+use Illuminate\Support\Facades\Storage;
+use Livewire\WithPagination;
 
 class ListVacancy extends Component
 {
+    use WithPagination;
+
     public $vacancies;
     public $vacancia_id;
     public $ventana = 1;
@@ -85,5 +89,11 @@ class ListVacancy extends Component
         $person->estado = "REGISTRADO";
         $person->save();
         session()->flash('alert', 'El usuario a sido retirado de la lista');
+    }
+
+    public function downloadFile($career_id, $person_id)
+    {
+        $career = CareerPerson::where('career_id', $career_id)->where('person_id', $person_id)->first();
+        return Storage::download($career->certificado);
     }
 }
