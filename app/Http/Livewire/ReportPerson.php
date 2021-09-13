@@ -2,11 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Department;
 use App\Models\Person;
 use Livewire\Component;
+use App\Models\Department;
 use Livewire\WithPagination;
-use Illuminate\Support\Carbon;
+use App\Exports\PeopleExport;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Concerns\Exportable;
 
 class ReportPerson extends Component
 {
@@ -59,5 +61,11 @@ class ReportPerson extends Component
     public function clearReport()
     {
         $this->reset(['departamento', 'genero', 'estadoCivil', 'hijo', 'estado']);
+    }
+
+    public function exportExcel() 
+    {
+        return Excel::download(new PeopleExport, 'Personas.xlsx');
+        //return (new PeopleExport)->download('Personas.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
     }
 }
