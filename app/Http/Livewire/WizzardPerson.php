@@ -200,7 +200,7 @@ class WizzardPerson extends Component
             'telefonoPersona' => 'required|numeric'
         ]);
 
-        $person = Person::find($this->person_id);
+        /*$person = Person::find($this->person_id);
         $person->ci = $this->ci;
         $person->expedido = $this->expedido;
         $person->genero = $this->genero;
@@ -216,9 +216,9 @@ class WizzardPerson extends Component
 
         session()->flash('message', 'Los datos se guardaron correctamente.');
 
-        $this->step2();
+        $this->step2();*/
 
-        /*$response = Http::post('https://sig.planificacion.gob.bo:8080/pge/v1/soapapiservicioexterno/consultadatopersonacertificacion', [
+        $response = Http::post('https://sig.planificacion.gob.bo:8080/pge/v1/soapapiservicioexterno/consultadatopersonacertificacion', [
             'numeroDocumento' => $this->ci
         ])->throw()->json();
 
@@ -246,7 +246,7 @@ class WizzardPerson extends Component
             $person->validacion_segip = 0;
             $person->save();
             session()->flash('alert', 'El carnet de identidad no es valido');
-        }*/
+        }
     }
 
     public function updateDiscapacidad()

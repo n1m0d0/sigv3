@@ -1,3 +1,4 @@
+<h3>Reporte del {{\Carbon\Carbon::now()->toDateTimeString()}}</h3>
 <table class="table">
     <thead>
         <tr class="bg-gray-700 dark:bg-dark-1 text-white">
@@ -11,6 +12,7 @@
             <th class="whitespace-nowrap">Edad</th>
             <th class="whitespace-nowrap">Departamento</th>
             <th class="whitespace-nowrap">Estado</th>
+            <th class="whitespace-nowrap">fecha de registro</th>
         </tr>
     </thead>
     <tbody>
@@ -60,6 +62,9 @@
                 </td>
                 <td class="border-b dark:border-dark-5">
                     {{ $person->estado }}
+                </td>
+                <td class="border-b dark:border-dark-5">
+                    {{ $person->created_at }}
                 </td>
             </tr>
         @endforeach

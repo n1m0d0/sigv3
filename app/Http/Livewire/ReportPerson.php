@@ -7,8 +7,8 @@ use Livewire\Component;
 use App\Models\Department;
 use Livewire\WithPagination;
 use App\Exports\PeopleExport;
+use Illuminate\Support\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
-use Maatwebsite\Excel\Concerns\Exportable;
 
 class ReportPerson extends Component
 {
@@ -18,6 +18,7 @@ class ReportPerson extends Component
     public $estadoCivil;
     public $hijo;
     public $estado;
+    public $resultSearch;
 
     public function mount()
     {
@@ -28,7 +29,6 @@ class ReportPerson extends Component
     {
         //$people = Person::paginate(10);
         $departments = Department::all();
-
 
         $peopleQuery = Person::query();
 
@@ -52,9 +52,9 @@ class ReportPerson extends Component
             $peopleQuery = $peopleQuery->where('estado', $this->estado);
         }
         
+        $this->resultSearch = $peopleQuery->get();
         $people = $peopleQuery->paginate(20);
-
-
+        
         return view('livewire.report-person', compact('people', 'departments'));
     }
 
@@ -65,7 +65,8 @@ class ReportPerson extends Component
 
     public function exportExcel() 
     {
-        return Excel::download(new PeopleExport, 'Personas.xlsx');
-        //return (new PeopleExport)->download('Personas.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+        $date = Carbon::now()->toDateTimeString();
+        return Excel::download(new PeopleExport($this->resultSearch), "Personas$date.xlsx");
+        //return (new PeopleExport($this->resultSearch))->download('Personas.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
     }
 }
