@@ -2,14 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\CareerPerson;
-use App\Models\Department;
-use App\Models\Payroll;
 use App\Models\Person;
+use App\Models\Payroll;
 use App\Models\Vacancy;
 use Livewire\Component;
-use Illuminate\Support\Facades\Storage;
+use Barryvdh\DomPDF\PDF;
+use App\Models\Department;
+use App\Models\CareerPerson;
 use Livewire\WithPagination;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class ListVacancy extends Component
 {
@@ -20,14 +22,19 @@ class ListVacancy extends Component
     public $ventana = 1;
     public $vacancia;
     public $data;
-    public $people;
     public $departamento;
     public $person_id;
     public $ver;
     public $listacorta;
+    public $genero;
+    public $hijo;
+    public $estadoCivil;
 
     public function render()
     {
+        $peopleQuery = Person::query();
+        $people = Person::query();
+
         if ($this->vacancia_id != null) {
             $this->vacancia = Vacancy::find($this->vacancia_id);
             $this->ventana = 2;
@@ -35,31 +42,41 @@ class ListVacancy extends Component
             $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Profecional');
         })->get();*/
             if ($this->vacancia->grado_academico == 'Profesional') {
-                $this->people = Person::whereHas('careers', function ($query) {
-                    $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', '!=', 'Egresado')->where('grado_academico', '!=', 'Bachillerato')->where('grado_academico', '!=', 'Técnico');
-                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO')->get();
-            }
-            if ($this->vacancia->grado_academico == 'Egresado') {
-                $this->people = Person::whereHas('careers', function ($query) {
-                    $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Egresado');
-                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO')->get();
+                $peopleQuery = $peopleQuery->whereHas('careers', function ($query) {
+                    $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Licenciatura');
+                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO');
             }
             if ($this->vacancia->grado_academico == 'Técnico') {
-                $this->people = Person::whereHas('careers', function ($query) {
+                $peopleQuery = $peopleQuery->whereHas('careers', function ($query) {
                     $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Técnico');
-                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO')->get();
+                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO');
+            }
+            if ($this->vacancia->grado_academico == 'Egresado') {
+                $peopleQuery = $peopleQuery->whereHas('careers', function ($query) {
+                    $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Egresado');
+                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO');
             }
             if ($this->vacancia->grado_academico == 'Bachillerato') {
-                $this->people = Person::whereHas('careers', function ($query) {
+                $peopleQuery = $peopleQuery->whereHas('careers', function ($query) {
                     $query->where('career_id', $this->vacancia->career_id)->where('grado_academico', 'Bachillerato');
-                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO')->get();
+                })->where('department_id', $this->vacancia->branch->department_id)->where('estado', '!=', 'SELECCIONADO')->where('estado', '!=', 'BENEFICIADO');
             }
         }
-        if($this->ver != null){
+        if ($this->genero) {
+            $peopleQuery = $peopleQuery->where('genero', $this->genero);
+        }
+        if ($this->hijo) {
+            $peopleQuery = $peopleQuery->where('hijos', $this->hijo);
+        }
+        if ($this->estadoCivil) {
+            $peopleQuery = $peopleQuery->where('estado_civil', $this->estadoCivil);
+        }
+        $people = $peopleQuery->paginate(10);
+        if ($this->ver != null) {
             $this->ventana = 3;
             $this->listacorta = Payroll::where('vacancy_id', $this->ver)->get();
         }
-        return view('livewire.list-vacancy');
+        return view('livewire.list-vacancy', compact('people'));
     }
 
     public function addPayroll($person_id)
@@ -81,7 +98,8 @@ class ListVacancy extends Component
         }
     }
 
-    public function removePayroll($payroll_id){
+    public function removePayroll($payroll_id)
+    {
         $payroll = Payroll::find($payroll_id);
         $payroll->estado = "INACTIVO";
         $payroll->save();
@@ -95,5 +113,19 @@ class ListVacancy extends Component
     {
         $career = CareerPerson::where('career_id', $career_id)->where('person_id', $person_id)->first();
         return Storage::download($career->certificado);
+    }
+
+    public function clearList()
+    {
+        $this->reset(['genero', 'estadoCivil', 'hijo']);
+    }
+
+    public function downloadPDF()
+    {
+        $today = Carbon::now()->format('d/m/Y');
+        $view = view('exports.shortlist', compact('today'))->render(); 
+        $pdf = PDF::loadHTML($view, "utc-8")->setPaper('a4', 'potrait')->setWarnings(false)->save('myfile.pdf');
+
+        return $pdf->download('listacorta.pdf');
     }
 }

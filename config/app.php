@@ -178,6 +178,7 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
     ],
 
@@ -236,6 +237,7 @@ return [
         //my aliases
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

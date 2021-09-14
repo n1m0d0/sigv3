@@ -51,7 +51,7 @@
             </div>
             <div class="col-span-12 sm:col-span-3 pt-6">
                 <button wire:click='exportExcel' class="btn btn-secondary">
-                    <x-feathericon-refresh-cw class="w-4 h-4 mr-1" /> Exportar Excel
+                    <x-feathericon-file-text class="w-4 h-4 mr-1" /> Exportar Excel
                 </button>
             </div>
         </div>

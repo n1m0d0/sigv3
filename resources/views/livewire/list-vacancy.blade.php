@@ -74,7 +74,7 @@
             <h1 class="col-span-12 text-xl font-medium leading-none mt-3 text-center">
                 {{ $vacancia->institution->razon_social }}</h1>
             <div class="col-span-12 md:col-span-3 mt-8">
-                <h1 class="text-lg font-medium leading-none mt-3 text-center">Sucursal</h1>
+                <h1 class="text-lg font-medium leading-none mt-3 text-center">Casa Matriz / Sucursal</h1>
                 <br>
                 <h1 class="font-medium leading-none mt-3">{{ $vacancia->branch->department->nombre }}</h1>
                 <br>
@@ -105,12 +105,35 @@
 
         <div class="box gird gird-cols-12 flex gap-4 items-center mt-2 py-4 px-6">
             <div class="col-span-12 sm:col-span-3">
+                <label class="form-label">Genero</label>
+                <select wire:model="genero" class="form-select">
+                    <option value="">Seleccione un opcion</option>
+                    <option value="M">Femenino</option>
+                    <option value="H">Masculino</option>
+                </select>
             </div>
             <div class="col-span-12 sm:col-span-3">
+                <label class="form-label">Estado Civil</label>
+                <select wire:model='estadoCivil' class="form-select">
+                    <option value="">Seleccione un opcion</option>
+                    <option>Soltero</option>
+                    <option>Casado</option>
+                    <option>Viudo</option>
+                    <option>Divorciado</option>
+                </select>
             </div>
             <div class="col-span-12 sm:col-span-3">
-            </div>
-            <div class="col-span-12 sm:col-span-3">
+                <label class="form-label">Es Padre/Madre/Ambos</label>
+                <select wire:model="hijo" class="form-select">
+                    <option value="">Seleccione un opcion</option>
+                    <option value="1">Si</option>
+                    <option value="0">No</option>
+                </select>
+            </div>            
+            <div class="col-span-12 sm:col-span-3 pt-6">
+                <button wire:click='clearList' class="btn btn-secondary">
+                    <x-feathericon-refresh-cw class="w-4 h-4 mr-1" /> Reiniciar
+                </button>
             </div>
         </div>
 
@@ -123,6 +146,7 @@
                             <th class="whitespace-nowrap">#</th>
                             <th class="whitespace-nowrap">Nombre Completo</th>
                             <th class="whitespace-nowrap">Departamento</th>
+                            <th class="whitespace-nowrap">Estado Civil</th>
                             <th class="whitespace-nowrap">Genero</th>
                             <th class="whitespace-nowrap">Es Padre/Madre/Ambos</th>
                             <th class="whitespace-nowrap">Formacion</th>
@@ -138,6 +162,9 @@
                                 </td>
                                 <td class="border-b dark:border-dark-5">
                                     {{ $person->department->nombre }}
+                                </td>
+                                <td class="border-b dark:border-dark-5">
+                                    {{ $person->estado_civil }}
                                 </td>
                                 <td class="border-b dark:border-dark-5">
                                     @if ($person->genero == 'M')
@@ -158,7 +185,8 @@
                                         @foreach ($person->careers as $career)
                                             <li>
                                                 {{ $career->nombre }}
-                                                <a class="flex cursor-pointer" wire:click="downloadFile({{ $career->id }}, {{ $person->id }})">
+                                                <a class="flex cursor-pointer"
+                                                    wire:click="downloadFile({{ $career->id }}, {{ $person->id }})">
                                                     <x-feathericon-hard-drive class="w-4 h-4 mr-2" /> Descargar
                                                 </a>
                                             </li>
@@ -175,12 +203,16 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $people->links() }}
             </div>
         </div>
     @endif
     @if ($ventana == 3)
         <div class="box mt-2 py-8 px-6">
             <h1 class="text-lg font-medium leading-none mt-3 text-center">Lista Corta</h1>
+            <button wire:click='downloadPDF' class="btn btn-secondary">
+                <x-feathericon-refresh-cw class="w-4 h-4 mr-1" /> Exportar a PDF
+            </button>
             <div class="overflow-x-auto mt-6">
                 <table class="table">
                     <thead>

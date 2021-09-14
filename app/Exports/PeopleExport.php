@@ -6,8 +6,9 @@ use App\Models\Person;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\Exportable;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
-class PeopleExport implements FromView
+class PeopleExport implements FromView, WithTitle
 {
     use Exportable;
     private $peopleQuery;
@@ -25,4 +26,9 @@ class PeopleExport implements FromView
         ]);
     }
     
+    public function title(): string
+    {
+        return 'Personas';
+    }
+
 }

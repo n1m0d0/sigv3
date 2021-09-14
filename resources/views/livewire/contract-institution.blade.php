@@ -60,7 +60,8 @@
                     <select wire:model="payroll_id" class="form-select">
                         <option value="">Seleccione un opcion</option>
                         @foreach ($payrolls as $payroll)
-                            <option value="{{ $payroll->id }}">{{ $payroll->person->nombres }} {{ $payroll->person->paterno }}
+                            <option class="uppercase" value="{{ $payroll->id }}">
+                                {{ $payroll->person->nombres }} {{ $payroll->person->paterno }}
                                 {{ $payroll->person->materno }}</option>
                         @endforeach
                     </select>
@@ -87,5 +88,7 @@
                 </div>
             </form>
         </div>
+        <a class="btn btn-outline-primary py-3 px-4 xl:w-80 mt-3 xl:mt-2 align-left"
+        href="{{ route('contract.institution') }}">Finalizar</a>
     @endif
 </div>

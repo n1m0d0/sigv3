@@ -34,7 +34,7 @@
                                 <td class="border-b dark:border-dark-5">
                                     {{ $contract->vacancy->salario }}
                                 </td>
-                                <td class="border-b dark:border-dark-5">
+                                <td class="border-b dark:border-dark-5 uppercase">
                                     {{ $contract->person->nombres }} {{ $contract->person->paterno }}
                                     {{ $contract->person->materno }}
                                 </td>
