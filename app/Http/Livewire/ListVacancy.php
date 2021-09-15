@@ -7,7 +7,6 @@ use App\Models\Payroll;
 use App\Models\Vacancy;
 use Livewire\Component;
 use Barryvdh\DomPDF\PDF;
-use App\Models\Department;
 use App\Models\CareerPerson;
 use Livewire\WithPagination;
 use Illuminate\Support\Carbon;
@@ -124,7 +123,7 @@ class ListVacancy extends Component
     {
         $today = Carbon::now()->format('d/m/Y');
         $view = view('exports.shortlist', compact('today'))->render(); 
-        $pdf = PDF::loadHTML($view, "utc-8")->setPaper('a4', 'potrait')->setWarnings(false)->save('myfile.pdf');
+        $pdf = PDF::loadView($view);
 
         return $pdf->download('listacorta.pdf');
     }

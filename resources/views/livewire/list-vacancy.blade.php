@@ -210,9 +210,9 @@
     @if ($ventana == 3)
         <div class="box mt-2 py-8 px-6">
             <h1 class="text-lg font-medium leading-none mt-3 text-center">Lista Corta</h1>
-            <button wire:click='downloadPDF' class="btn btn-secondary">
+            <!-- <button wire:click='downloadPDF' class="btn btn-secondary">
                 <x-feathericon-refresh-cw class="w-4 h-4 mr-1" /> Exportar a PDF
-            </button>
+            </button> -->
             <div class="overflow-x-auto mt-6">
                 <table class="table">
                     <thead>
@@ -240,10 +240,12 @@
                                         {{ $lista->estado }}
                                     </td>
                                     <td class="border-b dark:border-dark-5">
-                                        <a wire:click='removePayroll({{ $lista->id }})'
-                                            class="flex items-center mr-3 cursor-pointer">
-                                            <x-feathericon-trash class="w-4 h-4 mr-1" /> Quitar
-                                        </a>
+                                        <div class="text-theme-6">
+                                            <a wire:click='removePayroll({{ $lista->id }})'
+                                                class="flex items-center mr-3 cursor-pointer">
+                                                <x-feathericon-trash class="w-4 h-4 mr-1" /> Quitar
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endif
