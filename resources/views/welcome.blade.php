@@ -36,9 +36,9 @@
                     @include('layout.partials.flashMessage')
                     <div class="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                         <a class="btn btn-outline-secondary py-3 px-4 w-full xl:w-80 mt-3 xl:mt-2 align-top"
-                            href="{{ route('form.person') }}">Registrarse Jóvenes</a>
+                            href="{{ route('form.person') }}">Registro Jóvenes</a>
                         <a class="btn btn-outline-secondary py-3 px-4 w-full xl:w-80 mt-3 xl:mt-2 align-top"
-                            href="{{ route('form.institution') }}">Registrarse Empresa</a>
+                            href="{{ route('form.institution') }}">Registro Empresa</a>
                     </div>
                     <h2 class="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left mt-8">Iniciar Sesión</h2>
                     <form action="{{ route('auth.login') }}" method="POST">

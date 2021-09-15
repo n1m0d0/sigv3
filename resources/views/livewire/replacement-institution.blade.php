@@ -46,13 +46,13 @@
                                     </span>
                                 </td>
                                 <td class="border-b dark:border-dark-5">
-                                    <div class="form-check">
+                                    <!--<div class="form-check">
                                         <input  class="form-check-switch" type="checkbox"
                                             value="{{ $contract->id }}">
                                         <label class="form-check-label">
                                             Verificacion
                                         </label>
-                                    </div>
+                                    </div> -->
                                     <div class="form-check">
                                         <input wire:model='contract_id' class="form-check-switch" type="checkbox"
                                             value="{{ $contract->id }}">

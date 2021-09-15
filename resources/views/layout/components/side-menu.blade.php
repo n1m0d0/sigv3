@@ -8,14 +8,6 @@
     <ul>
         @role('admin')
         <li>
-            <a href="{{ route('page.dashboard') }}" class="side-menu side-menu--active">
-                <div class="side-menu__icon"> <i data-feather="home"></i> </div>
-                <div class="side-menu__title">
-                    Dashboard
-                </div>
-            </a>
-        </li>
-        <li>
             <a href="{{ route('form.official') }}" class="side-menu">
                 <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
                 <div class="side-menu__title"> Oficial </div>
