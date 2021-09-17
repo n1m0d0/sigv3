@@ -14,7 +14,13 @@ class SocietyController extends Controller
      */
     public function index()
     {
-        //
+        $societies = Society::all();
+        return response()->json([
+            'code' => '200',
+            'status' => 'succesful',
+            'message' => "Se encontro la Informacion",
+            'data' => $societies
+        ], 200);
     }
 
     /**
